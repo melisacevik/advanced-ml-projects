@@ -8,7 +8,7 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.width', 1000)
 
 # Load the data
-df1 = pd.read_csv("/Users/melisacevik/PycharmProjects/ML-Advanced/datasets/bengaluru_house_prices.csv")
+df1 = pd.read_csv("/Users/melisacevik/PycharmProjects/ML-Advanced/model/bengaluru_house_prices.csv")
 df1.head()
 
 # Check the shape of the data
