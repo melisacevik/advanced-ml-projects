@@ -1,12 +1,12 @@
 # Makine Öğrenmesi Projeleri 🚀
 
-Bu depo, **makine öğrenimi projelerini** içermektedir. Gerçek dünya problemlerine yönelik çözüm önerileri sunmak, ileri teknikleri deneyimlemek ve makine öğrenimi alanında yetkinlik geliştirmek isteyenler için tasarlanmıştır.
+Bu repo, **makine öğrenimi projelerini** içermektedir. Gerçek dünya problemlerine yönelik çözüm önerileri sunmak, ileri teknikleri deneyimlemek ve makine öğrenimi alanında yetkinlik geliştirmek isteyenler için tasarlanmıştır.
 
 ---
 
 ## 🗂️ Repo Yapısı
 
-Bu depodaki her klasör, bağımsız bir projeyi temsil eder ve kendi veri seti, kodu ve analizi ile tamamlanmıştır. İşte projelere genel bir bakış:
+Bu repodaki her klasör, bağımsız bir projeyi temsil eder ve kendi veri seti, kodu ve analizi ile tamamlanmıştır. İşte projelere genel bir bakış:
 
 ### 1. **Bangalore Ev Fiyat Tahmini Uygulaması: ([Link](https://github.com/melisacevik/advanced-ml-projects/tree/master/Project1))**
 - **Amaç:** Bangalore'daki ev fiyatlarını tahmin etmek için makine öğrenmesi modeli geliştirilmesi
