@@ -1,0 +1,165 @@
+TF-IDF Vectorizer Nedir?
+TF-IDF (Term Frequency-Inverse Document Frequency), metin verisini sayısal bir forma dönüştürmek için kullanılan bir tekniktir.
+Bu yöntem, bir kelimenin bir belgede ne kadar önemli olduğunu belirlemek için kullanılır ve genellikle metin madenciliği,
+doğal dil işleme ve makine öğrenmesi uygulamalarında kullanılır.
+
+Terimlerin Anlamı:
+1. TF (Term Frequency):
+   Bir kelimenin, bir belgedeki toplam kelimeler arasındaki frekansını ölçer.
+   Formül:
+   TF(t) = Kelimenin belge içindeki frekansı / Belgedeki toplam kelime sayısı
+
+2. IDF (Inverse Document Frequency):
+   Bir kelimenin, tüm belgelerde ne kadar yaygın olduğunu ölçer. Daha az yaygın kelimelere daha yüksek ağırlık verir.
+   Formül:
+   IDF(t) = log(Tüm belge sayısı / (1 + Kelimeyi içeren belge sayısı))
+
+1 eklemek sıfır bölme hatasını önler ve matematiksel stabilite sağlar.
+Logaritma değerleri ölçekler, yaygın kelimeleri daha az önemli hale getirir ve nadir kelimelere daha fazla ağırlık verir.
+yaygın kelimelerde idf küçük olur
+IDF değeri ne kadar büyükse, kelime o kadar az yaygındır. Bunun nedeni, IDF’nin matematiksel olarak az
+yaygın kelimelere daha yüksek bir ağırlık vermesi ve çok yaygın kelimelere düşük bir ağırlık vermesidir.
+
+3. TF-IDF Skoru:
+   TF ve IDF değerlerinin çarpımıyla elde edilir.
+   Formül:
+   TF-IDF(t) = TF(t) * IDF(t)
+
+Neden çarpılır?
+belgedeki bir kelimenin önemini hem yerel hem de genel düzeyde hesaplama isteğinden kaynaklanır.
+
+Neden Kullanılır?
+1. Kelime Önemini Belirleme:
+   TF-IDF, sık geçen ama anlamsız kelimeleri (örneğin "ve", "bir", "o") azaltır ve daha anlamlı kelimelere odaklanır.
+
+2. Boyut Azaltma:
+   Çok büyük metin veri kümelerinde, yalnızca önemli kelimelere odaklanarak özellik sayısını azaltır.
+
+3. Makine Öğrenmesi İçin Hazırlık:
+   Metin verisini sayısal forma dönüştürdüğü için, metin verilerini doğrudan makine öğrenmesi modellerinde kullanmayı mümkün kılar.
+
+4. Bağlamlı Analiz:
+   Kelimelerin bir belgedeki önemini değerlendirirken diğer belgelerle de kıyaslama yapar.
+
+TF-IDF’in Kullanım Alanları:
+- Arama Motorları: Bir kelimenin arama sonuçlarında ne kadar önemli olduğunu belirlemek için.
+- Öneri Sistemleri: Kullanıcıların önceki metin verilerine göre neyle ilgilendiğini tahmin etmek için.
+- Spam Filtreleme: E-posta metinlerindeki kelime önemine göre spam olup olmadığını belirlemek için.
+- Duygu Analizi: Metindeki önemli anahtar kelimeleri bulmak ve analize katkıda bulunmak için.
+
+Örnek Kullanım:
+Python'da Scikit-learn kütüphanesi ile TF-IDF kullanımı şu şekildedir:
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+# Metin verisi
+corpus = [    "Bu bir örnek belgedir.",    "Bu ikinci örnek belgedir.",    "Bu başka bir belgedir."]
+
+# TF-IDF Vectorizer
+vectorizer = TfidfVectorizer()
+X = vectorizer.fit_transform(corpus)
+
+# TF-IDF matrisi
+print(X.toarray())
+print(vectorizer.get_feature_names_out())
+
+Bu kod, metinleri sayısal forma dönüştürür ve her kelimenin TF-IDF skorunu hesaplar.
+
+
+
+---------------
+Belge nedir?
+
+Belge, genellikle bir cümle, paragraf ya da metin bloğu olabilir.
+Hangi bağlamda çalıştığınıza bağlı olarak belgenin tanımı değişebilir. Daha basit bir ifadeyle,
+belgeler üzerinde çalıştığınız birimlerdir.
+
+Belge Örnekleri:
+1. Cümle Seviyesinde:
+   Eğer cümleleri analiz ediyorsanız, her bir cümle bir belge olur.
+   - Örnek:
+     - Belge 1: "Kediler sevimlidir."
+     - Belge 2: "Köpekler sadıktır."
+
+2. Paragraf Seviyesinde:
+   Eğer paragrafları analiz ediyorsanız, her bir paragraf bir belge olur.
+   - Örnek:
+     - Belge 1: "Kediler birçok insan tarafından sevilir. Onlar sessiz ve şirin hayvanlardır."
+     - Belge 2: "Köpekler sadık dostlardır. Özellikle sahiplerine bağlılıklarıyla bilinirler."
+
+3. Makale Seviyesinde:
+   Eğer makaleleri analiz ediyorsanız, her bir makale bir belge olur.
+   - Örnek:
+     - Belge 1: "Kedilerin bakımı üzerine yazılmış bir makale."
+     - Belge 2: "Köpeklerin sadakati hakkında bir makale."
+
+TF-IDF Bağlamında Belge:
+TF-IDF, belgelerden oluşan bir koleksiyon üzerinde çalışır (bu koleksiyon genelde bir corpus olarak adlandırılır).
+- Belge: Bir metin birimi (örneğin bir cümle).
+- Corpus: Birden fazla belgeden oluşan bir koleksiyon.
+
+Eğer Belgenin Ne Olduğu Hakkında Şüphe Edersen:
+- "Hangi birimleri analiz ediyorum?" sorusunu sor.
+  - Eğer cümleleri analiz ediyorsan, belgeler cümlelerdir.
+  - Eğer paragrafları analiz ediyorsan, belgeler paragraflardır.
+  - Eğer tüm metni analiz ediyorsan, belgeler metnin tamamıdır.
+
+
+-------------------------------
+Neden stratify=y Kullanılır?
+Eğer hedef değişkeniniz (y) dengesiz bir sınıf dağılımına sahipse, eğitim ve test setlerinin sınıf dağılımı bozulabilir.
+
+Örneğin, sınıflarınız şöyle olsun:
+y = [0, 0, 0, 1, 1]
+
+Eğer stratify yapılmazsa, test setine sadece 0'lar veya sadece 1'ler düşebilir.
+Bu da modelin test setinde düzgün değerlendirilmesini zorlaştırır.
+
+stratify=y ile sınıf oranları hem eğitim hem de test setlerinde korunur.
+Örneğin:
+
+Eğitim setinde %60 '0' ve %40 '1' varsa, test setinde de aynı oranlar olur.
+
+
+--------------------
+Random State Nedir?
+random_state, veriyi rastgele işlemlere tabi tutarken (örneğin, veriyi eğitim ve test setlerine ayırırken)
+aynı sonuçları tekrar elde etmek için kullanılan bir kontrol mekanizmasıdır.
+Yani, rastgele işlemleri tekrarlanabilir hale getirir.
+
+Neden Random State Kullanılır?
+Makine öğrenmesinde, veriyi rastgele bir şekilde böleriz (örneğin, eğitim ve test setine ayırırken).
+Bu rastgelelik, her çalıştırmada farklı bir sonuç doğurabilir.
+Ancak, aynı sonuçları tekrar elde etmek istiyorsanız, random_state kullanmanız gerekir.
+
+Örnek:
+Veri setimiz şöyle olsun:
+X = [1, 2, 3, 4, 5]
+y = [10, 20, 30, 40, 50]
+
+random_state kullanılmazsa:
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4)
+print(X_train, X_test)
+
+Her çalıştırmada farklı sonuçlar alabilirsiniz, çünkü veri rastgele bölünür.
+1. Çalıştırma:
+   X_train = [2, 4, 5], X_test = [1, 3]
+2. Çalıştırma:
+   X_train = [1, 3, 5], X_test = [2, 4]
+
+random_state kullanılırsa:
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=42)
+print(X_train, X_test)
+
+Her çalıştırmada aynı sonuçları alırsınız:
+   X_train = [3, 1, 4], X_test = [2, 5]
+
+Sonuç:
+random_state, rastgele işlemleri tekrarlanabilir hale getirir.
+Aynı random_state değeri kullanıldığında, veriler her çalıştırmada aynı şekilde bölünür.
+Bu, test edilebilirlik ve karşılaştırılabilirlik açısından önemlidir.
+
