@@ -149,9 +149,9 @@ print("Accuracy score of the test data: ", test_data_accuracy)
 # Making a Predictive System
 # modelin görmediği bir veri seçiyoruz
 
-X_new = X_test[0]
+X_new = X_test[5]
 
-prediction = model.predict(X_new)
+prediction = model.predict(X_new) #modelin hiç görmeyip tahmin ettiği
 
 print(prediction)
 
@@ -160,3 +160,6 @@ if (prediction[0] ==0):
 else:
     print("The news is Fake")
 
+print(Y_test[5]) #modelin hiç görmediği ve ayırdığımız sonuc
+
+# bu ikisine bakarak doğru tahmin edip etmediğimizi test edebiliriz.
